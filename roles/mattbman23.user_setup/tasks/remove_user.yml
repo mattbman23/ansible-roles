@@ -4,9 +4,7 @@
   authorized_key:
     user: "{{ user }}" 
     key: "{{ lookup('file', '{{ public_key_path }}') }}" 
-    state: absent
-  notify:
-    - restart ssh
+    state: absent 
 
 - name: "Remove {{ user }} user from sudoers"
   file: 
@@ -18,3 +16,5 @@
     name: "{{ user }}"
     state: absent
     remove: yes
+  notify:
+    - restart ssh

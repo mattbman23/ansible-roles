@@ -1,0 +1,20 @@
+---
+
+- name: "Remove authorization key"
+  authorized_key:
+    user: "{{ user }}" 
+    key: "{{ lookup('file', '{{ public_key_path }}') }}" 
+    state: absent
+  notify:
+    - restart ssh
+
+- name: "Remove {{ user }} user from sudoers"
+  file: 
+    path: "/etc/sudoers.d/{{ user }}"
+    state: absent
+
+- name: "Remove user {{ user }}"
+  user: 
+    name: "{{ user }}"
+    state: absent
+    remove: yes

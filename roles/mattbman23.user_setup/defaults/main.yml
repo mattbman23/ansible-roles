@@ -1,0 +1,6 @@
+---
+# defaults file for user_setup
+user: "automation"
+public_key_path: "./id_rsa.pub"
+state: "present"
+user_shell: "/bin/bash"

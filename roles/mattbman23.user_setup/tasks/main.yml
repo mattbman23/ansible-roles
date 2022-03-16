@@ -1,0 +1,6 @@
+---
+- include_tasks: add_user.yml
+  when: state == 'present'
+
+- include_tasks: remove_user.yml
+  when: state == 'absent'
